@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Основные метаданные страницы -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Справочник минералов для геодезистов</title>
+
+    <!-- Подключение шрифта Montserrat из Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Подключение основного CSS-файла -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Внешний контейнер для заголовка и фильтров -->
+    <header>
+        <!-- Основной заголовок сайта -->
+        <h1>Справочник минералов</h1>
+
+        <!-- Поисковая строка для поиска минералов по названию -->
+        <div class="search-container">
+            <input type="text" id="search" placeholder="Поиск по названию...">
+        </div>
+
+        <!-- Фильтры: твердость, цвет, блеск -->
+        <div class="filters">
+            <select id="hardness-filter">
+                <option value="">Все твердости</option>
+                <option value="1-3">1-3</option>
+                <option value="4-6">4-6</option>
+                <option value="7-10">7-10</option>
+            </select>
+            <select id="color-filter">
+                <option value="">Все цвета</option>
+                <option value="белый">Белый</option>
+                <option value="красный">Красный</option>
+                <option value="зеленый">Зеленый</option>
+                <option value="синий">Синий</option>
+                <option value="желтый">Желтый</option>
+                <option value="черный">Черный</option>
+                <option value="прозрачный">Прозрачный</option>
+            </select>
+            <select id="shine-filter">
+                <option value="">Все блески</option>
+                <option value="металлический">Металлический</option>
+                <option value="стеклянный">Стеклянный</option>
+                <option value="перламутровый">Перламутровый</option>
+                <option value="алмазный">Алмазный</option>
+                <option value="тусклый">Тусклый</option>
+            </select>
+        </div>
+    </header>
+
+    <!-- Основной контент страницы: список минералов -->
+    <main>
+        <div id="minerals-container" class="minerals-grid">
+            <!-- JavaScript динамически создаёт карточки минералов внутри этого контейнера -->
+        </div>
+    </main>
+
+    <!-- Ненавязчивая подпись автора внизу страницы -->
+    <div class="text-footer" id="text-footer"></div>
+
+    <!-- Скрипт с данными о минералах и логикой отображения -->
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

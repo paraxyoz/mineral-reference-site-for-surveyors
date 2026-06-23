@@ -1,0 +1,257 @@
+/*
+  CSS для сайта справочника минералов.
+  Здесь описаны стили для страницы, шапки, фильтров, карточек и подписки.
+*/
+
+body {
+    /* Базовые стили страницы */
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+    color: #e0e0e0;
+    min-height: 100vh;
+}
+
+header {
+    /* Верхняя панель с заголовком и фильтрами */
+    background: linear-gradient(135deg, #4a4a4a, #6a6a6a), url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='50'><text y='40' font-size='40' fill='white'>💎</text></svg>") repeat;
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+h1 {
+    /* Заголовок страницы */
+    margin: 0;
+    font-size: 3em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    animation: fadeInDown 1s ease-out;
+}
+
+header p {
+    /* Дополнительный текст внутри шапки, если он появится */
+    font-size: 2em;
+    margin: 10px 0 20px 0;
+    animation: fadeInDown 1s ease-out 0.5s both;
+}
+
+@keyframes fadeInDown {
+    /* Анимация появления текста сверху */
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.search-container {
+    /* Контейнер для поля поиска */
+    margin: 20px 0;
+}
+
+#search {
+    /* Стили текстового поля поиска */
+    width: 350px;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: 2px solid #555;
+    border-radius: 25px;
+    background: #2a2a2a;
+    color: #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+#search:focus {
+    /* Подсветка поля при фокусе */
+    border-color: #32cd32;
+    box-shadow: 0 0 10px rgba(50, 205, 50, 0.5);
+    outline: none;
+}
+
+.filters {
+    /* Контейнер для выпадающих списков фильтров */
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.filters select {
+    /* Стили для селектов фильтров */
+    padding: 10px 15px;
+    font-size: 14px;
+    border: 2px solid #555;
+    border-radius: 20px;
+    background: #2a2a2a;
+    color: #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.filters select:focus {
+    /* Подсветка селектов при фокусе */
+    border-color: #32cd32;
+    box-shadow: 0 0 10px rgba(50, 205, 50, 0.5);
+    outline: none;
+}
+
+main {
+    /* Отступы вокруг основного контента */
+    padding: 40px 20px;
+}
+
+.text-footer {
+    /* Очень тонкая подпись автора внизу страницы */
+    text-align: right;
+    color: rgba(255,255,255,0.14);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    margin: 0 20px 10px 0;
+    user-select: none;
+}
+
+.minerals-grid {
+    /* Сетка для карточек минералов */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.mineral-card {
+    /* Базовый стиль карточки минерала */
+    background: #222222;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease-out forwards;
+    perspective: 1000px;
+    height: 400px;
+}
+
+.mineral-card:nth-child(1) { animation-delay: 0.1s; }
+.mineral-card:nth-child(2) { animation-delay: 0.2s; }
+.mineral-card:nth-child(3) { animation-delay: 0.3s; }
+.mineral-card:nth-child(4) { animation-delay: 0.4s; }
+.mineral-card:nth-child(5) { animation-delay: 0.5s; }
+.mineral-card:nth-child(6) { animation-delay: 0.6s; }
+.mineral-card:nth-child(7) { animation-delay: 0.7s; }
+.mineral-card:nth-child(8) { animation-delay: 0.8s; }
+
+@keyframes fadeInUp {
+    /* Анимация появления карточки снизу вверх */
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.mineral-card:hover {
+    /* Тень карточки при наведении */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.card-inner {
+    /* Внутренний контейнер для двух сторон карточки */
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.mineral-card:hover .card-inner {
+    /* Поворот карточки при наведении */
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    /* Обе стороны карточки занимают всю площадь */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 15px;
+}
+
+.card-front {
+    /* Передняя сторона карточки */
+    background: #222222;
+    z-index: 2;
+}
+
+.card-back {
+    /* Обратная сторона карточки */
+    background: #333333;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: white;
+    font-size: 1em;
+    line-height: 1.4;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    text-align: center;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.card-back p {
+    /* Текст описания на обратной стороне */
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.mineral-card img {
+    /* Изображение минерала на карточке */
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.mineral-card:hover img {
+    /* Лёгкое увеличение изображения при наведении */
+    transform: scale(1.1);
+}
+
+.mineral-info {
+    /* Обёртка для текста названия и параметров минерала */
+    padding: 20px;
+}
+
+.mineral-name {
+    /* Название минерала */
+    font-size: 1.6em;
+    margin: 0 0 15px 0;
+    color: white;
+    font-weight: 600;
+}
+
+.mineral-details {
+    /* Дополнительные параметры минерала */
+    font-size: 0.95em;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.mineral-details p {
+    margin: 5px 0;
+}
